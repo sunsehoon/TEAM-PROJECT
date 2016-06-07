@@ -1,73 +1,29 @@
 #include <stdio.h>
-#define N 10
-
 int main(void)
 {
-	int i,j,k=0;
-	int p_num[N]={0};
-	char num[N][60]={0}, op[N-1], tmp=0;
+	FILE* save;//변수받는 놈
+	char variance[10];//변수받는 새끼
+	int i;// 도우미년
 
-	for(i=0; i<N; i++)
+	save=fopen("save.txt", "rw");
+
+	fscanf(save, "%c", &variance[i]);
+	if (1)
 	{
-		for(j=0; j<60; j++)
+		for (i=1;i<=10;i++)
+			fputc(variance[i], save);
+
+		if ((save = fopen("save.txt", "r"))!=NULL)
 		{
-			scanf("%c", &tmp);
+			while ((variance[i] = fgetc(save))!=EOF)
+				printf("save.txt의 내용 %c\n", variance[i]);
 
-			if(48<=tmp && tmp<=57 || tmp=='.')
-				num[i][j]=tmp;
-			else if(tmp==' ')
-			{
-				scanf("%c", &op[i]);
-				getchar();
-				break;
-
-			}
-			else if(tmp=='\n')
-			{
-				k=1;
-				break;
-			}
 		}
-		p_num[i]=j;
-
-	
-
-
-
-
-	switch(op[i])
-	{
-		case'+' : PLUS;	
-				  break;
-		case'-' : MINUS;
-				  break;
-		case'*' : MULTIPLY;
-				  break;
-		case'/' : DIVIDE;
-				  break;
-		case'%' : 
-				  break;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		if(k)
-			break;
 	}
 
-}	
+	fclose(save);
+
+
+
+}
+
